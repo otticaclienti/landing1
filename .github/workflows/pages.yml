@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'claude/review-landing-design-VF2i2']
   workflow_dispatch:
 
 permissions:
