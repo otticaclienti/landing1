@@ -114,6 +114,50 @@
     });
   }
 
+  /* ---------- Inline YouTube playback (lite-embed pattern) ----------
+     Click on a .yt-card swaps the thumbnail for an autoplaying iframe,
+     so the video plays inside the page instead of opening youtube.com. */
+  const extractYouTubeId = (url) => {
+    try {
+      const u = new URL(url);
+      // youtu.be/<id>
+      if (u.hostname === 'youtu.be') return u.pathname.replace('/', '');
+      // youtube.com/watch?v=<id>
+      const v = u.searchParams.get('v');
+      if (v) return v;
+      // youtube.com/embed/<id> or /shorts/<id>
+      const parts = u.pathname.split('/').filter(Boolean);
+      return parts[parts.length - 1];
+    } catch (e) {
+      return null;
+    }
+  };
+
+  document.querySelectorAll('.yt-card').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      if (card.dataset.played) return;
+      const href = card.getAttribute('href');
+      if (!href) return;
+      const id = extractYouTubeId(href);
+      if (!id) return; // fall back to normal navigation
+      e.preventDefault();
+      card.dataset.played = '1';
+
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('title', 'Testimonianza video');
+
+      const thumb = card.querySelector('.yt-thumb');
+      if (thumb) {
+        thumb.innerHTML = '';
+        thumb.appendChild(iframe);
+      }
+    });
+  });
+
   /* ---------- Smooth scroll with navbar offset ---------- */
   const navbar = document.querySelector('.navbar');
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
