@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" fill="none">
+  <!-- Eye icon -->
+  <g stroke="#0D7A3F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M10 45 C 10 20, 70 20, 88 45 C 70 70, 10 70, 10 45 Z"/>
+    <circle cx="49" cy="45" r="16"/>
+    <circle cx="49" cy="45" r="6" fill="#0D7A3F"/>
+    <path d="M58 35 Q 62 33 64 37" stroke-width="3"/>
+    <path d="M3 45 L -1 41" stroke-width="4"/>
+    <path d="M95 45 L 99 41" stroke-width="4"/>
+    <path d="M3 45 L -1 49" stroke-width="4"/>
+    <path d="M95 45 L 99 49" stroke-width="4"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="115" y="42" font-family="'Roboto Slab', serif" font-weight="900" font-size="30" fill="#0D7A3F" letter-spacing="0">OTTICA</text>
+  <text x="115" y="74" font-family="'Roboto Slab', serif" font-weight="900" font-size="30" fill="#0D7A3F" letter-spacing="0">CLIENTI</text>
+</svg>
