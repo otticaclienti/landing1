@@ -39,23 +39,37 @@
       <h2 class="h2 center reveal">PREVENTIVI <span class="accent">ACCETTATI</span> DAI NOSTRI AFFILIATI</h2>
       <p class="lead center reveal">Le chat WhatsApp dei centri partner che ricevono pazienti per la contattologia avanzata.</p>
 
-      <!-- Order is column-major (1,6 / 2,4 / 3,5) so CSS columns
-           render: col1 = chat-1 + chat-6, col2 = chat-2 + chat-4,
-           col3 = chat-3 + chat-5 — Tetris-balanced columns. -->
+      <!-- Visible rows desired (row-major): 3, 6, 2 / 1, 5, 4
+           CSS columns flow column-major, so HTML is reordered to:
+           col 1 = chat-3 + chat-1
+           col 2 = chat-6 + chat-5
+           col 3 = chat-2 + chat-4 -->
       <div class="reel-grid reveal">
         <!-- col 1 -->
+        <article class="reel-card">
+          <div class="reel-thumb screenshot">
+            <img src="assets/chat-3.jpg" alt="Preventivo accettato — chat WhatsApp" loading="lazy" />
+          </div>
+        </article>
         <article class="reel-card">
           <div class="reel-thumb screenshot">
             <img src="assets/chat-1.jpg" alt="Preventivo accettato — chat WhatsApp" loading="lazy" />
           </div>
         </article>
+
+        <!-- col 2 -->
         <article class="reel-card">
           <div class="reel-thumb screenshot">
             <img src="assets/chat-6.jpg" alt="Preventivo accettato — chat WhatsApp" loading="lazy" />
           </div>
         </article>
+        <article class="reel-card">
+          <div class="reel-thumb screenshot">
+            <img src="assets/chat-5.jpg" alt="Preventivo accettato — chat WhatsApp" loading="lazy" />
+          </div>
+        </article>
 
-        <!-- col 2 -->
+        <!-- col 3 -->
         <article class="reel-card">
           <div class="reel-thumb screenshot">
             <img src="assets/chat-2.jpg" alt="Preventivo accettato — chat WhatsApp" loading="lazy" />
@@ -64,18 +78,6 @@
         <article class="reel-card">
           <div class="reel-thumb screenshot">
             <img src="assets/chat-4.jpg" alt="Preventivo accettato — chat WhatsApp" loading="lazy" />
-          </div>
-        </article>
-
-        <!-- col 3 -->
-        <article class="reel-card">
-          <div class="reel-thumb screenshot">
-            <img src="assets/chat-3.jpg" alt="Preventivo accettato — chat WhatsApp" loading="lazy" />
-          </div>
-        </article>
-        <article class="reel-card">
-          <div class="reel-thumb screenshot">
-            <img src="assets/chat-5.jpg" alt="Preventivo accettato — chat WhatsApp" loading="lazy" />
           </div>
         </article>
       </div>
