@@ -293,16 +293,22 @@ p { margin: 0 0 14px; color: var(--text); }
 }
 
 /* ---------- Reels (vertical testimonial cards) ---------- */
+/* Masonry-like layout via CSS columns: cards flow top-to-bottom
+   in each column with their natural height — no row-stretching,
+   no white gaps. HTML order is column-major (1,6,2,4,3,5). */
 .reel-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px 26px;
+  column-count: 3;
+  column-gap: 26px;
   margin-top: 40px;
-  align-items: start;
 }
 .reel-card {
   text-align: center;
   position: relative;
+  display: block;
+  margin-bottom: 26px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
 }
 .reel-thumb {
   position: relative;
@@ -388,7 +394,7 @@ p { margin: 0 0 14px; color: var(--text); }
 }
 
 @media (max-width: 760px) {
-  .reel-grid { grid-template-columns: 1fr; max-width: 360px; margin: 30px auto 0; }
+  .reel-grid { column-count: 1; max-width: 360px; margin: 30px auto 0; }
 }
 
 /* ---------- Split (PAS) sections ---------- */
@@ -1235,7 +1241,8 @@ p { margin: 0 0 14px; color: var(--text); }
 
   /* social proof spacing */
   .mt-xl { margin-top: 36px; }
-  .reel-grid { gap: 18px; }
+  .reel-grid { column-gap: 18px; }
+  .reel-card { margin-bottom: 18px; }
 
   /* PAS sections — reduce gap and concept image */
   .split { gap: 28px; }
