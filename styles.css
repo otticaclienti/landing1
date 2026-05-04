@@ -296,7 +296,7 @@ p { margin: 0 0 14px; color: var(--text); }
 .reel-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  gap: 50px 26px;
   margin-top: 40px;
 }
 .reel-card {
@@ -325,8 +325,9 @@ p { margin: 0 0 14px; color: var(--text); }
   border-radius: var(--radius-lg);
   z-index: -1;
 }
-.reel-card:nth-child(2) .reel-thumb { transform: rotate(1.5deg); }
-.reel-card:nth-child(2)::before { inset: 18px 14px -14px -14px; }
+/* alternate tilt + shadow side for every other card */
+.reel-card:nth-child(even) .reel-thumb { transform: rotate(1.5deg); }
+.reel-card:nth-child(even)::before { inset: 18px 14px -14px -14px; }
 .reel-card:hover .reel-thumb { transform: rotate(0) scale(1.02); }
 
 .gradient-1 { background: linear-gradient(160deg, #0D7A3F 0%, #022614 80%); }
