@@ -1170,6 +1170,20 @@ p { margin: 0 0 14px; color: var(--text); }
 }
 
 @media (max-width: 760px) {
+  /* heavier body weight + stronger contrast for mobile readability */
+  body { font-weight: 500; }
+  p, li, label { color: var(--ink); font-weight: 500; }
+  .muted { color: #3D4759 !important; font-weight: 500; }
+  .muted-2 { color: #5A6679 !important; font-weight: 500; }
+  .hero-sub { color: var(--ink); font-weight: 500; }
+  .lead, .lead-2 { color: var(--ink); font-weight: 500; }
+  .vs-list li .muted { color: #3D4759 !important; }
+  .proof-card ul, .proof-card li { color: var(--ink) !important; font-weight: 500; }
+  .service-body p { color: var(--ink); font-weight: 500; }
+  .reel-name, .yt-name { color: var(--ink); font-weight: 700; }
+  .stat-label, .stat-cap { color: var(--ink); font-weight: 700; }
+  .quote-box { color: var(--ink); font-weight: 500; }
+
   /* tighter section padding */
   .section { padding: 64px 0; }
   .hero { padding: 24px 0 48px; }
