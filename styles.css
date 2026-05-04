@@ -333,6 +333,18 @@ p { margin: 0 0 14px; color: var(--text); }
 .gradient-2 { background: linear-gradient(160deg, #11924B 0%, #062418 80%); }
 .gradient-3 { background: linear-gradient(160deg, #16A34A 0%, #032818 80%); }
 
+.reel-thumb.screenshot {
+  background: var(--bg-cream);
+  padding: 0;
+  display: block;
+}
+.reel-thumb.screenshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .reel-brand {
   position: absolute;
   top: 16px;
