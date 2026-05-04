@@ -298,6 +298,7 @@ p { margin: 0 0 14px; color: var(--text); }
   grid-template-columns: repeat(3, 1fr);
   gap: 50px 26px;
   margin-top: 40px;
+  align-items: start;
 }
 .reel-card {
   text-align: center;
@@ -338,12 +339,14 @@ p { margin: 0 0 14px; color: var(--text); }
   background: var(--bg-cream);
   padding: 0;
   display: block;
+  aspect-ratio: auto;     /* override the 9/16 — let image dictate height */
+  height: auto;
 }
 .reel-thumb.screenshot img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
+  /* whole screenshot visible, no crop */
 }
 
 .reel-brand {
