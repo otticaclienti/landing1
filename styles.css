@@ -473,6 +473,7 @@ p { margin: 0 0 14px; color: var(--text); }
 .concept-img.photo {
   background: var(--bg-cream);
   padding: 0;
+  aspect-ratio: 3 / 2;        /* match pas-1.jpg / pas-2.jpg native ratio */
 }
 .concept-img.photo img {
   width: 100%;
