@@ -301,8 +301,9 @@ p { margin: 0 0 14px; color: var(--text); }
 .reel-mobile-extra { display: none; }
 @media (max-width: 760px) {
   .reel-mobile-extra { display: block; margin-top: 36px; max-width: 360px; margin-left: auto; margin-right: auto; }
-  /* keep only the first 2 cards in the main reels section on mobile */
-  #testimonianze .reel-grid > .reel-card:nth-child(n+3) { display: none; }
+  /* on mobile, only show chat-5 (4th HTML child) and chat-2 (5th) in main section;
+     chat-3, chat-1, chat-6, chat-4 are surfaced inside the VS and YT sections */
+  #testimonianze .reel-grid > .reel-card:not(:nth-child(4)):not(:nth-child(5)) { display: none; }
 }
 
 /* ---------- Reels (vertical testimonial cards) ---------- */
