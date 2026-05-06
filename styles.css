@@ -1210,6 +1210,13 @@ p { margin: 0 0 14px; color: var(--text); }
 }
 
 @media (max-width: 760px) {
+  /* force heading font + weight identical to desktop on mobile
+     (avoids Plus Jakarta Sans falling back to Inter on slow networks) */
+  h1, h2, h3, h4, .h2, .h2-xl, .h3, .hero-title {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, system-ui, sans-serif !important;
+    font-weight: 800 !important;
+  }
+
   /* heavier body weight + stronger contrast for mobile readability */
   body { font-weight: 500; }
   p, li, label { color: var(--ink); font-weight: 500; }
