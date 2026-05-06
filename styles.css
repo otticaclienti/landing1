@@ -292,6 +292,19 @@ p { margin: 0 0 14px; color: var(--text); }
   .media-strip { grid-template-columns: repeat(3, 1fr); gap: 18px; }
 }
 
+/* ---------- Mobile-only extra reel groups ----------
+   Hidden by default (desktop). On mobile we shrink the main
+   "Preventivi accettati" grid to the first 2 cards, and reveal
+   the .reel-mobile-extra blocks placed inside the VS section
+   and below the YouTube testimonials so the 6 chats are spread
+   across the page (2+2+2) instead of being all in one chunk. */
+.reel-mobile-extra { display: none; }
+@media (max-width: 760px) {
+  .reel-mobile-extra { display: block; margin-top: 36px; max-width: 360px; margin-left: auto; margin-right: auto; }
+  /* keep only the first 2 cards in the main reels section on mobile */
+  #testimonianze .reel-grid > .reel-card:nth-child(n+3) { display: none; }
+}
+
 /* ---------- Reels (vertical testimonial cards) ---------- */
 /* Masonry-like layout via CSS columns: cards flow top-to-bottom
    in each column with their natural height — no row-stretching,
