@@ -967,10 +967,12 @@ p { margin: 0 0 14px; color: var(--text); }
   border-radius: 12px;
   padding: 14px 18px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   color: var(--text);
+  line-height: 1.45;
 }
+.founder-bullets li .check-circle { margin-top: 2px; }
 .founder-bullets li strong { color: var(--ink); }
 .founder-bullets li.highlight {
   background: var(--bg-card);
