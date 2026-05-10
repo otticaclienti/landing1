@@ -204,7 +204,13 @@ p { margin: 0 0 14px; color: var(--text); }
   margin-bottom: 22px;
   box-shadow: var(--shadow-card);
 }
-.hero-logo img { height: 88px; display: block; }
+.hero-logo img {
+  height: 88px;
+  width: auto;
+  max-width: none;        /* override global img max-width: 100% */
+  display: block;
+  object-fit: contain;
+}
 @media (max-width: 640px) {
   .hero-logo img { height: 64px; }
   .hero-logo { padding: 10px 18px; }
