@@ -215,18 +215,59 @@
     });
   });
 
-  /* ---------- Smooth scroll with navbar offset ---------- */
+  /* ---------- Smooth scroll + visual feedback on CTA ---------- */
   const navbar = document.querySelector('.navbar');
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
-      const id = link.getAttribute('href').slice(1);
-      if (!id) return;
-      const target = document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      const offset = (navbar ? navbar.offsetHeight : 0) + 12;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
+      try {
+        const id = link.getAttribute('href').slice(1);
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        const offset = (navbar ? navbar.offsetHeight : 0) + 12;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        if ('scrollBehavior' in document.documentElement.style) {
+          window.scrollTo({ top, behavior: 'smooth' });
+        } else {
+          window.scrollTo(0, top); // fallback for older browsers
+        }
+        // Visual feedback so Clarity/users see the action landed
+        if (id === 'candidatura') {
+          target.classList.add('cta-flash');
+          setTimeout(() => target.classList.remove('cta-flash'), 1200);
+          // focus first input shortly after the scroll completes
+          setTimeout(() => {
+            const firstInput = target.querySelector('input[name="nome"]');
+            if (firstInput) firstInput.focus({ preventScroll: true });
+          }, 700);
+        }
+      } catch (err) {
+        // last-resort fallback: native anchor behavior
+        try { window.location.hash = link.getAttribute('href'); } catch (e) {}
+      }
     });
+  });
+
+  /* ---------- Global error logger ----------
+     'Script error.' generic strings come from cross-origin scripts
+     (fbevents.js, clarity, fonts). We surface details to console and
+     to Clarity custom events so we can diagnose them later. */
+  window.addEventListener('error', function (evt) {
+    var info = {
+      message: (evt && evt.message) || 'unknown',
+      source: (evt && evt.filename) || 'cross-origin',
+      lineno: (evt && evt.lineno) || 0
+    };
+    try { console.warn('[js-error]', info); } catch (_) {}
+    try {
+      if (typeof window.clarity === 'function') {
+        window.clarity('event', 'js-error');
+        window.clarity('set', 'js-error-source', info.source);
+      }
+    } catch (_) {}
+  });
+  window.addEventListener('unhandledrejection', function (evt) {
+    try { console.warn('[promise-rejection]', evt && evt.reason); } catch (_) {}
   });
 })();
