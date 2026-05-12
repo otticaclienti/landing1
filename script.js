@@ -216,7 +216,6 @@
   });
 
   /* ---------- Smooth scroll + visual feedback on CTA ---------- */
-  const navbar = document.querySelector('.navbar');
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
       try {
@@ -225,25 +224,23 @@
         const target = document.getElementById(id);
         if (!target) return;
         e.preventDefault();
-        const offset = (navbar ? navbar.offsetHeight : 0) + 12;
-        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        if ('scrollBehavior' in document.documentElement.style) {
-          window.scrollTo({ top, behavior: 'smooth' });
+        // Use scrollIntoView so the browser tracks the element even if
+        // images load and shift the page during the animation.
+        if (typeof target.scrollIntoView === 'function') {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
-          window.scrollTo(0, top); // fallback for older browsers
+          window.scrollTo(0, target.getBoundingClientRect().top + window.pageYOffset - 12);
         }
         // Visual feedback so Clarity/users see the action landed
         if (id === 'candidatura') {
           target.classList.add('cta-flash');
           setTimeout(() => target.classList.remove('cta-flash'), 1200);
-          // focus first input shortly after the scroll completes
           setTimeout(() => {
             const firstInput = target.querySelector('input[name="nome"]');
             if (firstInput) firstInput.focus({ preventScroll: true });
           }, 700);
         }
       } catch (err) {
-        // last-resort fallback: native anchor behavior
         try { window.location.hash = link.getAttribute('href'); } catch (e) {}
       }
     });
