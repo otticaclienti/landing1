@@ -201,7 +201,10 @@
       card.dataset.played = '1';
 
       const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
+      // mute=1 is required so iOS Safari and in-app WebViews actually
+      // honour autoplay; without it the video freezes on the play button.
+      // Users can unmute with one tap on YouTube's speaker icon.
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`;
       iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
       iframe.setAttribute('allowfullscreen', '');
       iframe.setAttribute('playsinline', '');
