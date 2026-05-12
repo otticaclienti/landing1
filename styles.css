@@ -65,12 +65,13 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Typography ---------- */
 h1, h2, h3, h4, .h2, .h2-xl, .h3, .hero-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', Roboto, 'Helvetica Neue', Arial, -apple-system, system-ui, 'Segoe UI', sans-serif;
   font-weight: 800;
   letter-spacing: -.015em;
   line-height: 1.05;
   color: var(--ink);
   margin: 0;
+  font-feature-settings: "tnum" 1, "lnum" 1;  /* tabular + lining numbers for consistent rendering */
 }
 
 /* Anchor scroll offset so smooth-scroll lands a bit below the top edge */
